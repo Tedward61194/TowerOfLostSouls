@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbpg2ggot4ube"]
+
+[ext_resource type="Script" uid="uid://c8enfnolgnwgy" path="res://Scripts/FP_Player.gd" id="1_5cjrv"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5cjrv"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_j0p05"]
+sky_material = SubResource("ProceduralSkyMaterial_5cjrv")
+
+[sub_resource type="Environment" id="Environment_5nsto"]
+background_mode = 2
+sky = SubResource("Sky_j0p05")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cjrv"]
+albedo_color = Color(0.385256, 0.853957, 7.70092e-07, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0p05"]
+albedo_color = Color(0.922432, 0, 0.398007, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nsto"]
+albedo_color = Color(0.213946, 0.265958, 0.83099, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjpho"]
+albedo_color = Color(0.834402, 0.302531, 0.702821, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j0p05"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5nsto"]
+points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5nsto")
+
+[node name="Enviornment" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="Enviornment"]
+material_override = SubResource("StandardMaterial3D_5cjrv")
+use_collision = true
+size = Vector3(20, 0.001, 20)
+
+[node name="Box1" type="CSGBox3D" parent="Enviornment"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4.00021, 1.24972, 3.99944)
+material_override = SubResource("StandardMaterial3D_j0p05")
+use_collision = true
+
+[node name="Box2" type="CSGBox3D" parent="Enviornment"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -3.88624, 1.22974, 3.94009)
+material_override = SubResource("StandardMaterial3D_5nsto")
+use_collision = true
+
+[node name="Wall1" type="CSGBox3D" parent="Enviornment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 10)
+material_override = SubResource("StandardMaterial3D_gjpho")
+size = Vector3(20, 4, 1)
+
+[node name="Wall3" type="CSGBox3D" parent="Enviornment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -10)
+material_override = SubResource("StandardMaterial3D_gjpho")
+size = Vector3(21, 4, 1)
+
+[node name="Wall2" type="CSGBox3D" parent="Enviornment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.92096, 1.5, 0.0790405)
+material_override = SubResource("StandardMaterial3D_gjpho")
+size = Vector3(21, 4, 1)
+
+[node name="Wall4" type="CSGBox3D" parent="Enviornment"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.079, 1.5, -0.420959)
+material_override = SubResource("StandardMaterial3D_gjpho")
+size = Vector3(20, 4, 1)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+script = ExtResource("1_5cjrv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_j0p05")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("ConvexPolygonShape3D_5nsto")
+
+[node name="Head" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.2)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
