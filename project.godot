@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="GMSimulator"
+config/name="Tower Of Lost Souls"
 run/main_scene="uid://cbpg2ggot4ube"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
